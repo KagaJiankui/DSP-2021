@@ -1,0 +1,4 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qdiscrete-time system, MATLAB, system modeling, difference equation, black-box system\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThis and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.].\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qcomponent, formatting, style, styling, insert\\E$"}
+{"rule":"A_BIT_OF","sentence":"^\\QBased on the backward inference of the input sequence from the recursive results, it is clear that the initial input sequence needs to be rearranged in reverse binary order, i.e., the indices of the original sequence are converted to binary numbers, and then converted back to decimal after a bit inversion.\\E$"}

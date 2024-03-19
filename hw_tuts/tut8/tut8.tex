@@ -1,0 +1,242 @@
+\documentclass{article}
+\usepackage{geometry,amsmath,amssymb,theorem,caption,extarrows,mathrsfs,physics,bm}
+\usepackage{graphicx,xcolor,listings,geometry,booktabs,subfigure,tikz}
+\usepackage{pgfplots,grffile}
+\pgfplotsset{compat=newest}
+  %% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{patchplots}
+\usepackage{xeCJK,fontspec}
+\setCJKmainfont[BoldFont=方正小标宋简体,ItalicFont=楷体]{华文宋体}
+  \setCJKsansfont{黑体}%serif是有衬线字体sans serif无衬线字体。
+  %\setmonofont{CMU Typewriter Text} % 等寬字型
+  \XeTeXlinebreaklocale "zh"
+  \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\lstset{
+    basicstyle          =   \sffamily,          % 基本代码风格
+    keywordstyle        =   \bfseries,          % 关键字风格
+    commentstyle        =   \rmfamily\itshape,  % 注释的风格，斜体
+    stringstyle         =   \ttfamily,  % 字符串风格
+    flexiblecolumns,                % 别问为什么，加上这个
+    numbers             =   left,   % 行号的位置在左边
+    showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \small\ttfamily,    % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,      % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =   tb,   % 显示边框
+}
+
+\lstdefinestyle{Python}{
+    language        =   Python, % 语言选Python
+    basicstyle      =   \small\ttfamily,
+    numberstyle     =   \small\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color[HTML]{338AAF}\ttfamily,
+    breaklines      =   true,   % 自动换行，建议不要写太长的行
+    columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mathematica}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color[HTML]{338AAF}\ttfamily,
+    keywordstyle=\small\sffamily\bfseries\color{magenta},
+    numberstyle=\small\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\small\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    basewidth=0.5em,
+    captionpos=b,
+    columns=fixed,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+\lstdefinestyle{matlab}{
+    language=matlab,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color[HTML]{338AAF}\ttfamily,
+    keywordstyle=\small\sffamily\bfseries\color{magenta},
+    numberstyle=\small\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\small\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    basewidth=0.5em,
+    captionpos=b,
+    columns=fixed,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\const}{\mathop{}\!\mathrm{const.}}
+\newcommand{\splitline}{\noindent\rule[0.25\baselineskip]{\textwidth}{0.5pt}}
+\newcommand{\autographinsert}[2]{\includegraphics[
+  height=\dimexpr\pagegoal-\pagetotal-4\baselineskip\relax,width=#1\textwidth,
+  keepaspectratio]{#2}}
+  % NOTE: 插入图片如果出问题飘到下一页,请调整减掉的行数
+\newtheorem{theorem}{定理}
+\geometry{a4paper,left=1.8cm,right=1.8cm,top=1.5cm,bottom=1.5cm}
+\begin{document}
+\title{Tutorial 8}
+\author{仇琨元}
+\date{\today}
+\maketitle
+
+\section{Problem 1}
+
+\paragraph{(a)}
+
+The sequence \( y[n] \) is upsampled from \( x[n] \) with upsampling rate L. Use the DFT spectrum of \( x[n] \) to express \( Y[k] \):
+\begin{equation}
+	\begin{aligned}
+		Y[k] & =\sum_{n=0}^{LN-1} y[n]W_{LN}^{nk}  \\
+		     & =\sum_{n=0}^{N-1} x[n] W_{LN}^{nkL} \\
+	\end{aligned}
+\end{equation}
+
+Use the unitary characteristics of the twiddling factor,
+\begin{equation}
+	(W_{N}^{n})^{QN+R}=W_{N}^{Rn}\exp(-2\pi jQn)=W_{N}^{Rn}
+\end{equation}
+
+Where
+\begin{equation}
+	Q=k//N\in \mathbb{N},R=k\mod N\in \mathbb{N}
+\end{equation}
+
+Substitute (3) into (1), thus
+\begin{equation}
+	Y[k]=\text{repmat}(X[k],L)
+\end{equation}
+
+\paragraph{(b)}
+
+Use MATLAB to plot the result:
+\begin{figure}[htpb]
+	\centering
+	\input{p1.tex}
+	\label{fig:p1}
+\end{figure}
+
+\section{Problem 2}
+\paragraph{(a)}
+
+\begin{lstlisting}[language=matlab,style=matlab]
+    x=[2,-5,6,-3,4,-4,0,-7,8];
+    y=circshift(x,-12);
+    y(-3-(-5)+1)
+\end{lstlisting}
+
+The answer is -4.
+
+\paragraph{(b)}
+
+\begin{lstlisting}[language=matlab,style=matlab]
+    z=circshift(x,15);
+    z(2-(-5)+1)
+\end{lstlisting}
+
+The answer is -5.
+
+\section{Problem 3}
+
+Use the convolution characteristics of DFT to evaluate the discrete circular convolution.
+
+\begin{lstlisting}[language=matlab,style=matlab]
+    ifft(fft([-3,2,-1,4]).*fft([1,3,2,-2]))
+\end{lstlisting}
+
+Therefore
+\begin{equation}
+	y[n]=[3,3,-9,11]
+\end{equation}
+
+\section{Problem 4}
+\paragraph{(a)}
+
+The circular convolution for two sequences with the same length can be expressed as the convolution between two extended sequence:
+\begin{equation}
+	\begin{aligned}
+		y_{C}[n] & =(g[n]*(\delta[n]+\delta[n-L])*h[n])[L,2L-1] \\
+		         & =(y_{L}[n]*(\delta[n]+\delta[n-L]))[L,2L-1]  \\
+		         & =(y_{L}[n])[L,2L-1]+(y_{L}[n])[0,L-1]
+	\end{aligned}
+\end{equation}
+
+Where the \( L \) is the length of the operand and there should be zero-padding in the lase summation:
+\begin{lstlisting}[language=matlab,style=matlab]
+    yl=conv(g,h);
+    l=length(yl);
+    yc=[yl(l+1:2*l),0]+yl(1:l+1)
+\end{lstlisting}
+
+\paragraph{(b)}
+
+Use the formula derived above, the result of the circular equation is:
+\begin{equation}
+	\begin{aligned}
+		y_{L}             & =[-6,22,-3,-54,77,9,-28,63,-6,13,12] \\
+		\Rightarrow y_{C} & =[-34,85,-9,-41,89,9]
+	\end{aligned}
+\end{equation}
+
+This result corresponds to that calculated by IFFT.
+
+\section{Problem 5}
+
+Firstly, use the convolution, TD shifting and decimation property of DFT to simplify the \( G[k],H[k] \):
+\begin{equation}
+	\begin{aligned}
+		G[k]             & =\frac{1}{2}\left( X[2k]+W_{N}^{k}X[2k] \right),k\in[0,\frac{N}{2}-1] \\
+		H[k]             & =\frac{1}{2}\left( X[2k]-W_{N}^{k}X[2k] \right),k\in[0,\frac{N}{2}-1] \\
+		\Rightarrow X[k] & =\frac{1}{2}(G[k]^{-1}+H[k]^{-1})                                     \\
+		                 & =(1+W_{N}^{m})G[m]+(1-W_{N}^{m})H[m],m=k \mod \frac{N}{2}
+	\end{aligned}
+\end{equation}
+
+\section{Problem 6}
+\paragraph{(a)}
+
+For arbitrary length \( N \), the asymmetric sequence \( x[n] \) can be written as
+\begin{equation}
+	x[n]=x[0:\left\lfloor \frac{N}{2} \right\rfloor ]+x[0:\left\lfloor \frac{N}{2} \right\rfloor+1]+x_{c}
+\end{equation}
+
+where the \( x_{c} \) can be zero for even N and non-zero for odd N.
+
+\section{Problem 7}
+
+Use DFT to evaluate the linear convolution. Pad the input vectors with zeros that the length of both padded vectors exceed \( L_{1}+L_{2}-1 \):
+\begin{lstlisting}[language=matlab,style=matlab]
+    x=[2,1,2];
+    y=[-4,0,-3,2];
+    x1=[x,zeros([1,length(y)-1])];
+    y1=[y,zeros([1,length(x)-1])];
+    c=ifft(fft(x1).*fft(y1));
+\end{lstlisting}
+
+The result is
+\begin{equation}
+	w[n]=[-8,-4,-14,1,-4,4]
+\end{equation}
+
+
+\end{document}

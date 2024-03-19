@@ -1,0 +1,9 @@
+clear;close;clc;
+x0=hamming(20).';
+[fx0,w0]=DTFTsamples(x0);
+fx1=DFTsum(x0,length(x0));
+figure(1);
+subplot(211);
+plot(linspace(0,2*pi,length(x0)),abs(fx1));
+subplot(212);
+plot(w0,abs(fx0));

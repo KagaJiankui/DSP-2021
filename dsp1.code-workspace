@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "miniproject"
+		}
+	],
+	"settings": {
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"jupyter.jupyterServerType": "remote"
+	}
+}

@@ -1,0 +1,7 @@
+ADSR
+lowpass
+piecewise
+matlab
+matlab
+STFT
+Hayton

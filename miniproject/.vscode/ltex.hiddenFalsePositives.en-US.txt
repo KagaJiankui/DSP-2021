@@ -1,0 +1,8 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qoctaves below and above.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q[language=matlab,style=matlab]../matlab/ToScale.m\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[language=matlab,style=matlab]../matlab/PlayMusicFile.m\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q[language=matlab,style=matlab]../matlab/PlayMusicFile.m\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\Q[language=matlab,style=matlab]../matlab/PlayMusicFile.m\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q电子音乐是一种使用DSP技术合成音乐声音信号的音乐艺术。\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q音乐是组织特定时域波形的声音信号的艺术形式。 DSP技术可以依据人的主观意愿任意生成声音信号。\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QMATLAB编程实现电子乐合成器 仇琨元 11913019\\E$"}

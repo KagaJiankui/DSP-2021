@@ -1,0 +1,7 @@
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q shows, is a 1st-order low-pass filter.\\E$"}
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, is a low-pass filter that blocks the high-frequency components of the input signal.\\E$"}
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q shows, the impulse signal is recovered after passing the inverse system \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QFor the system \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q , its inverse system in Z-domain is \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q , and thus the inverse system in time domain is \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q meets the anticipation from the coefficients of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q:\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QFor the method (2.5), use Z-transform to simplify the IIR filter: \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Therefore in time domain, the system is \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q , which is a moving average.\\E$"}
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q confirms the anticipation using the coefficients of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q:\\E$"}

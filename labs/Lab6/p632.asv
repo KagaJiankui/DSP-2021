@@ -1,0 +1,15 @@
+clear;close;clc;
+%cascase
+ft=0.3*pi;
+M=ceil(log(2)/(2*log(cos(ft/2))));
+num1=poly([-1,-1,-1,-1])/16;
+[m,p,w]=FreRes(num1,1,256);
+f=FreResPlot(m,p,w,1);
+
+[s,val]=fsolve(@(x) hjw(x,),0);
+
+function h=hjw(M,f)
+    a=sin(M*f/2)/sin(f/2);
+    b=exp(-1j/2*(M-1)*f);
+    h=abs(a*b/M);
+end
